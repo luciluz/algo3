@@ -44,10 +44,7 @@ bool subset_sum(vector<int> C, int i, int j){
 
 ```cpp
 bool subset_suma_aux(const vector<int>& C, int i, int j, vector<int>& p) {
-    if (j < 0) {
-        return false; // Regla de factibilidad
-    }
-
+    if (j < 0) return false; // Regla de factibilidad
     if (j == 0) {
         // Imprime el subconjunto actual almacenado en el vector p
         for (int num : p) {
@@ -56,25 +53,22 @@ bool subset_suma_aux(const vector<int>& C, int i, int j, vector<int>& p) {
         cout << endl;
         return true;
     }
-
-    if (i == 0) {
-        return false;
-    }
+    if (i == 0) return false;
 
     // Prueba incluir el elemento actual en el subconjunto
     p.push_back(C[i - 1]);
-    bool incluido = subset_sum_aux(C, i - 1, j - C[i - 1], p);
+    bool incluido = subset_suma_aux(C, i - 1, j - C[i - 1], p);
     p.pop_back(); // Elimina el último elemento del vector p
 
     // Prueba no incluir el elemento actual en el subconjunto
-    bool no_incluido = subset_sum_aux(C, i - 1, j, p);
+    bool no_incluido = subset_suma_aux(C, i - 1, j, p);
 
     return incluido || no_incluido;
 }
 
 void subset_suma(const vector<int>& C, int k) {
     vector<int> p; // Vector para mantener el subconjunto actual
-    bool result = subset_sum_aux(C, C.size(), k, p);
+    bool result = subset_suma_aux(C, C.size(), k, p);
 
     if (!result) {
         cout << "No se encontró ningún subconjunto que sume " << k << endl;
