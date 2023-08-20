@@ -244,7 +244,6 @@ int main() {
 ### Ejercicio 3
 
 **a)** Para una matriz de 4x4 el árbol del algoritmo sería de esta manera:
-![im5](images/ej3_tree.png)
 Nota: aquí ya está implementada una poda la cual sólo sigue al siguiente hijo con índices mayores (para no repetir subconjuntos)
 
 Posible implementación en C++:
