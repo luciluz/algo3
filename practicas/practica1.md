@@ -93,5 +93,108 @@ int main() {
 
 **a)** Al ser cuadrados mágicos de orden n quiere decir que se tienen n² casillas, entonces al usar fuerza bruta se tendrían que generar (n²)! cuadrados mágicos.
 
-**b)**
+**b)** El arbol de backtracking por fuerza bruta sería de este estilo:
+![im1](images/ej2_tree_fuerzabruta.png)
+
+Una posible implementación sería la siguiente:
+```cpp
+// variables globales
+const int N = 3;
+int cuadrado[N][N] = {}; // esta sería la matriz con la que se inicia el algoritmo
+int numero_magico = (pow(N,3)+N)/2;
+int contador = 0; // contador de cuadrados mágicos encontrados
+bool usados[N*N+1] = {false};
+
+bool esMagico(){
+    // inicializo variables locales que usaré
+    int sum_fila=0;
+    int sum_col=0;
+    int sum_diag1=0;
+    int sum_diag2=0;
+    bool num_utilizados[N*N+1] = {false}; // arreglo booleano para rastrear números utilizados
+
+    // verifico que las filas sumen el número mágico
+    for(int i=0;i<N;i++){
+        sum_fila=0;
+        for(int j=0;j<N;j++){
+            // me fijo que el número esté en rango
+            int num = cuadrado[i][j];
+            if(num<1 || num>N*N){
+                return false;
+            }
+            sum_fila += cuadrado[i][j];
+            num_utilizados[num] = true;
+        }
+        if(numero_magico != sum_fila) return false;
+    }
+
+    // verifico que las columnas sumen el número mágico
+    for(int j=0;j<N;j++){
+        sum_col=0;
+        for(int i=0;i<N;i++){
+            sum_col += cuadrado[i][j];
+        }
+        if(numero_magico != sum_col) return false;
+    }
+
+    // verifico ahora las diagonales
+    for(int i=0;i<N;i++){ // diagonal 1
+        sum_diag1 += cuadrado[i][i];
+    }
+    if(numero_magico != sum_diag1) return false;
+
+    for(int i=N-1;i>=0;i--){
+        sum_diag2 += cuadrado[i][N-1-i];
+    }
+    if(numero_magico != sum_diag2) return false;
+
+    // verifico que realmente se utilizan los números correspondientes
+    for(int num = 1; num <= N*N; num++) {
+        if (!num_utilizados[num]) // Un número no se utilizó
+            return false;
+    }
+
+    // finalmente, si el algoritmo llega hasta aquí es porque sí es cuadrado mágico
+    return true;
+}
+
+void square_generator(int i, int j){
+    if(i==N){ // si i=N-1 es porque se acabaron las filas
+        if(esMagico()){
+            contador++;
+        }
+        return;
+    }
+
+    int sigI = i, sigJ = j + 1;
+    if (sigJ == N) {
+        sigI = i + 1;
+        sigJ = 0;
+    }
+
+    for (int num = 1; num <= N*N; num++) {
+        if (!usados[num]) {
+            cuadrado[i][j] = num;
+            usados[num] = true;
+            square_generator(sigI, sigJ);
+            cuadrado[i][j] = 0;
+            usados[num] = false;
+        }
+    }
+    // reinicio num_utilizados para la siguiente iteración
+    for (int num = 1; num <= N*N; num++) {
+        usados[num] = false;
+    }
+}
+
+int main() {
+    // generar cuadrados
+    square_generator(0, 0);
+
+    // Imprimir el resultado
+    cout << "Número de cuadrados mágicos de orden " << N << ": " << contador << endl;
+
+    return 0;
+}
+```
   
