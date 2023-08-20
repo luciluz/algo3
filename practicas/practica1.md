@@ -99,7 +99,7 @@ int main() {
 Una posible implementación sería la siguiente:
 ```cpp
 // variables globales
-const int N = 3;
+const int N = 3; // aqui se elije el tamaño del cuadrado
 int cuadrado[N][N] = {}; // esta sería la matriz con la que se inicia el algoritmo
 int numero_magico = (pow(N,3)+N)/2;
 int contador = 0; // contador de cuadrados mágicos encontrados
@@ -192,6 +192,49 @@ int main() {
     square_generator(0, 0);
 
     // Imprimir el resultado
+    cout << "Número de cuadrados mágicos de orden " << N << ": " << contador << endl;
+
+    return 0;
+}
+```
+
+**d)** La poda mejora un poco la eficiencia del algoritmo pero sigue siendo malo para números altos.
+```cpp
+void square_generator(int i, int j, int sum_filas[], int sum_columnas[]) {
+    if (i == N) {
+        if (esMagico()) {
+            contador++;
+        }
+        return;
+    }
+
+    int sigI = i, sigJ = j + 1;
+    if (sigJ == N) {
+        sigI = i + 1;
+        sigJ = 0;
+    }
+
+    for (int num = 1; num <= N * N; num++) {
+        if (!usados[num] && sum_filas[i] + num <= numero_magico && sum_columnas[j] + num <= numero_magico) {
+            cuadrado[i][j] = num;
+            usados[num] = true;
+            sum_filas[i] += num;
+            sum_columnas[j] += num;
+            square_generator(sigI, sigJ, sum_filas, sum_columnas);
+            cuadrado[i][j] = 0;
+            usados[num] = false;
+            sum_filas[i] -= num;
+            sum_columnas[j] -= num;
+        }
+    }
+}
+
+int main() {
+    int sum_filas[N] = {0}; // suma parcial de cada fila
+    int sum_columnas[N] = {0}; // suma parcial de cada columna
+
+    square_generator(0, 0, sum_filas, sum_columnas);
+
     cout << "Número de cuadrados mágicos de orden " << N << ": " << contador << endl;
 
     return 0;
