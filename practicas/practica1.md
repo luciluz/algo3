@@ -20,10 +20,10 @@
 ![im1](images/backtraking_tree.png)
 
 **g)**
-![im1](images/subset_sum.png)
+![im2](images/subset_sum.png)
 
 **h)**
-![im1](images/ej1_tree_regla_factibilidad.png)
+![im3](images/ej1_tree_regla_factibilidad.png)
 
 **i)** otra regla de factibilidad sería que el algoritmo te de true cuando j = 0.
 
@@ -94,7 +94,7 @@ int main() {
 **a)** Al ser cuadrados mágicos de orden n quiere decir que se tienen n² casillas, entonces al usar fuerza bruta se tendrían que generar (n²)! cuadrados mágicos.
 
 **b)** El arbol de backtracking por fuerza bruta sería de este estilo:
-![im1](images/ej2_tree_fuerzabruta.png)
+![im4](images/ej2_tree_fuerzabruta.png)
 
 Una posible implementación sería la siguiente:
 ```cpp
@@ -242,6 +242,60 @@ int main() {
 ```
 
 ### Ejercicio 3
+
+**a)** Para una matriz de 4x4 el árbol del algoritmo sería de esta manera:
+![im5](images/ej3_tree.png)
+Nota: aquí ya está implementada una poda la cual sólo sigue al siguiente hijo con índices mayores (para no repetir subconjuntos)
+
+Posible implementación en C++:
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// variables globales
+vector<int> subconj_max;
+int suma_max = 0;
+
+vector<vector<int>> matriz = {{0,10,10,1},{0,0,5,2},{0,0,0,1},{0,0,0,0}}; // aquí se puede ir probando con distintos ejemplos de matrices
+int suma_actual = 0;
+
+void calcularActual(vector<int> subconj_actual){
+    suma_actual=0;
+    for(int i: subconj_actual){
+        for(int j: subconj_actual){
+            suma_actual+=matriz[i][j];
+        }
+    }
+    if(suma_actual > suma_max){ // si es mayor a la máxima entonces lo actualizo
+        suma_max=suma_actual;
+        subconj_max=subconj_actual;
+    }
+}
+
+void armarSubconj(vector<int> subconj_actual, int k){
+    if(subconj_actual.size()==k){
+        calcularActual(subconj_actual);
+        return;
+    }
+    int n = 0;
+    if (subconj_actual.size()!=0){ // ṕoda para que cuando se haga la recursión sólo puedas agregar índices mayores
+        n = subconj_actual[subconj_actual.size()-1];
+    }
+    for(int i=n;i<matriz.size();i++){
+        subconj_actual.push_back(i);
+        armarSubconj(subconj_actual, k);
+        subconj_actual.pop_back();
+    }
+}
+```
+
+**b)** Calcular complejidad temporal y espacial (pendiente)
+
+**c)** Una poda extra puede ser fijarse que la cantidad de índices que se pueden agregar, más los que ya se agregaron, no superen el tamaño de k. De esta forma se evitan recursiones innecesarias.
+
+### Ejercicio 4
 
 **a)**
 
