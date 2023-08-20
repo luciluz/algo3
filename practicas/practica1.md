@@ -240,4 +240,9 @@ int main() {
     return 0;
 }
 ```
+
+### Ejercicio 3
+
+**a)**
+
   
