@@ -293,7 +293,7 @@ void armarSubconj(vector<int> subconj_actual, int k){
 
 **b)** Calcular complejidad temporal y espacial (pendiente)
 
-**c)** Una poda extra puede ser fijarse que la cantidad de índices que se pueden agregar, más los que ya se agregaron, no superen el tamaño de k. De esta forma se evitan recursiones innecesarias.
+**c)** Una poda extra puede ser fijarse que la cantidad de índices que se pueden agregar, más los que ya se agregaron, sean >= a k. De esta forma se evitan recursiones innecesarias, ya que si son menores nunca alcanzarán el tamaño k en esa rama, por lo que no vale la pena continuar por ahí.
 
 ### Ejercicio 4
 
