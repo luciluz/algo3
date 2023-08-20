@@ -244,6 +244,7 @@ int main() {
 ### Ejercicio 3
 
 **a)** Para una matriz de 4x4 el árbol del algoritmo sería de esta manera:
+![im5](images/ej3_tree.png)
 Nota: aquí ya está implementada una poda la cual sólo sigue al siguiente hijo con índices mayores (para no repetir subconjuntos)
 
 Posible implementación en C++:
@@ -292,7 +293,8 @@ void armarSubconj(vector<int> subconj_actual, int k){
 
 **b)** Calcular complejidad temporal y espacial (pendiente)
 
-**c)** Una poda extra puede ser fijarse que la cantidad de índices que se pueden agregar, más los que ya se agregaron, sean >= a k. De esta forma se evitan recursiones innecesarias, ya que si son menores nunca alcanzarán el tamaño k en esa rama, por lo que no vale la pena continuar por ahí.
+**c)** Una poda extra puede ser fijarse que la cantidad de índices que se pueden agregar, más los que ya se agregaron, sean >= a k. De esta forma se evitan recursiones innecesarias, ya que si son menores nunca alcanzarán el tamaño k en esa rama, por lo que no vale la pena continuar por ahí. El árbol quedaría de la siguiente manera:
+![im5](images/ej3_tree2.png)
 
 ### Ejercicio 4
 
