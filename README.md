@@ -2,7 +2,5 @@
 2023 - 2° cuatrimestre
 
 ## Prácticas
-
-## Prácticas
 Práctica 1: Técnicas Algorítmicas
-  - [Resolucion](practicas/practica1.md)
+  - [Enunciado](practicas/practica1.pdf) y [Resolucion](practicas/practica1.md)
