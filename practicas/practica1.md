@@ -283,8 +283,12 @@ void armarSubconj(vector<int> subconj_actual, int k){
     if (subconj_actual.size()!=0){ // ṕoda para que cuando se haga la recursión sólo puedas agregar índices mayores
         n = subconj_actual[subconj_actual.size()-1];
     }
-    for(int i=n;i<matriz.size();i++){
-        subconj_actual.push_back(i);
+    for(int i=n+1;i<matriz.size();i++){
+        if(subconj_actual.size()==0){ // esto es para que no repita índices
+            subconj_actual.push_back(i-1);
+        } else{
+            subconj_actual.push_back(i);
+        }
         armarSubconj(subconj_actual, k);
         subconj_actual.pop_back();
     }
