@@ -25,8 +25,6 @@
 **h)**
 ![im3](images/ej1_tree_regla_factibilidad.png)
 
-**i)** otra regla de factibilidad sería que el algoritmo te de true cuando j = 0.
-
 Posible implementación en C++:
 ```cpp
 bool subset_sum(vector<int> C, int i, int j){
@@ -39,6 +37,8 @@ bool subset_sum(vector<int> C, int i, int j){
     }
 }
 ```
+
+**i)** otra regla de factibilidad sería que el algoritmo te de true cuando j = 0.
 
 **j)** Posible implementación en C++
 
