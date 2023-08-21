@@ -439,4 +439,11 @@ int main() {
 **b)** calcular complejidad temporal y espacial (pendiente)
 
 **c)** proponer una poda por optimalidad y mostrar que es correcta (pendiente)
+
+
+## Programación Dinámica (y su relación con *backtracking*)
+
+### Ejercicio 5
+
+**a)**
   
