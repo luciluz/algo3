@@ -302,6 +302,141 @@ void armarSubconj(vector<int> subconj_actual, int k){
 
 ### Ejercicio 4
 
-**a)**
+**a)** Para entender el funcionamiento del algoritmo, el siguiente árbol es cómo realiza las recursiones para la matriz de la consigna:
 
+![im5](images/ej4_tree.png)
+
+La implementación en C++ sería la siguiente:
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// variables globales
+vector<int> pi_minimo;
+int suma_minima=9999999; // pongo un valor lo suficientemente alto para que el algoritmo funcione
+
+vector<int> pi_actual;
+
+vector<vector<int>> matriz = {{0,1,10,10},{10,0,3,15},{21,17,0,2},{3,22,30,0}};
+int n=matriz.size();
+vector<bool> used(n, false);
+
+
+void calcularSuma(vector<int> pi){
+    int suma_actual=0;
+    suma_actual+= matriz[n-1][0];
+    for(int i=0;i<n-1;i++){
+        suma_actual+=matriz[pi[i]][pi[i+1]];
+    }
+    if(suma_actual<suma_minima){
+        suma_minima=suma_actual;
+        pi_minimo=pi;
+    }
+}
+
+void armarPermutaciones(vector<int> pi_actual){
+    if (pi_actual.size()==n){
+        calcularSuma(pi_actual);
+        return;
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (!used[i]) { // esto sirve para no repetir índices
+            used[i] = true;
+            pi_actual.push_back(i);
+            armarPermutaciones(pi_actual);
+            pi_actual.pop_back();
+            used[i] = false;
+        }
+    }
+}
+
+
+int main() {
+    vector<int> pi_actual;
+    armarPermutaciones(pi_actual);
+
+    cout << "Permutación de suma mínima: ";
+    for (int i : pi_minimo) {
+        cout << i << " ";
+    }
+    cout << "\nSuma mínima: " << suma_minima << endl;
+
+    return 0;
+}
+```
+
+La siguiente es otra opción del mismo algoritmo pero que te imprime por pantalla las distintas permutaciones con su suma correspondiente:
+
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// variables globales
+vector<int> pi_minimo;
+int suma_minima=9999999; // pongo un valor lo suficientemente alto para que el algoritmo funcione
+
+vector<int> pi_actual;
+
+vector<vector<int>> matriz = {{0,1,10,10},{10,0,3,15},{21,17,0,2},{3,22,30,0}};
+int n=matriz.size();
+vector<bool> used(n, false);
+
+
+void calcularSuma(vector<int> pi) {
+    int suma_actual = 0;
+    suma_actual += matriz[n - 1][0];
+    for (int i = 0; i < n - 1; i++) {
+        suma_actual += matriz[pi[i]][pi[i + 1]];
+    }
+    cout << "Permutación: ";
+    for (int i : pi) {
+        cout << i << " ";
+    }
+    cout << " - Suma: " << suma_actual << endl;
+    if (suma_actual < suma_minima) {
+        suma_minima = suma_actual;
+        pi_minimo = pi;
+    }
+}
+
+void armarPermutaciones(vector<int> pi_actual){
+    if (pi_actual.size()==n){
+        calcularSuma(pi_actual);
+        return;
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (!used[i]) { // esto sirve para no repetir índices
+            used[i] = true;
+            pi_actual.push_back(i);
+            armarPermutaciones(pi_actual);
+            pi_actual.pop_back();
+            used[i] = false;
+        }
+    }
+}
+
+
+int main() {
+    vector<int> pi_actual;
+    armarPermutaciones(pi_actual);
+
+    cout << "Permutación de suma mínima: ";
+    for (int i : pi_minimo) {
+        cout << i << " ";
+    }
+    cout << "\nSuma mínima: " << suma_minima << endl;
+
+    return 0;
+}
+```
+
+**b)** calcular complejidad temporal y espacial (pendiente)
+
+**c)** proponer una poda por optimalidad y mostrar que es correcta (pendiente)
   
