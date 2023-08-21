@@ -304,7 +304,7 @@ void armarSubconj(vector<int> subconj_actual, int k){
 
 **a)** Para entender el funcionamiento del algoritmo, el siguiente árbol es cómo realiza las recursiones para la matriz de la consigna:
 
-![im6]()
+![im6](images/ej4_tree1.png)
 
 La implementación en C++ sería la siguiente:
 ```cpp
