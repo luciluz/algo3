@@ -302,7 +302,7 @@ void armarSubconj(vector<int> subconj_actual, int k){
 
 ### Ejercicio 4
 
-**a)** Para entender el funcionamiento del algoritmo, el siguiente árbol es cómo realiza las recursiones para la matriz de la consigna:
+**a)** Para entender el funcionamiento del algoritmo, el siguiente árbol es cómo realiza las recursiones el algoritmo para la matriz de la consigna:
 
 ![im6](images/ej4_tree1.png)
 
@@ -438,7 +438,98 @@ int main() {
 
 **b)** calcular complejidad temporal y espacial (pendiente)
 
-**c)** proponer una poda por optimalidad y mostrar que es correcta (pendiente)
+**c)** Una poda por optimalidad sería calcular la parte de la fórmula que es una sumatoria para tener un calculo parcial de esa permutación. Si el cálculo es mayor o igual a la suma mínima entonces no vale la pena seguir por ese camino ya que no se obtendrá una solución mejor. El árbol para el ejemplo de la consigna sería el siguiente:
+
+![im7](images/ej4_tree2.png)
+
+La siguiente es una implementación en C++ que imprime por pantalla las permutaciones y sus respectivas sumas parciales para poder observar lo que está pasando:
+
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// variables globales
+vector<int> pi_minimo;
+int suma_minima=9999999; // pongo un valor lo suficientemente alto para que el algoritmo funcione
+
+vector<int> pi_actual;
+
+vector<vector<int>> matriz = {{0,1,10,10},{10,0,3,15},{21,17,0,2},{3,22,30,0}};
+int n=matriz.size();
+vector<bool> used(n, false);
+
+
+void calcularSuma(vector<int> pi) {
+    int suma_actual = 0;
+    suma_actual += matriz[n - 1][0];
+    for (int i = 0; i < n - 1; i++) {
+        suma_actual += matriz[pi[i]][pi[i + 1]];
+    }
+    cout << "Permutación: ";
+    for (int i : pi) {
+        cout << i << " ";
+    }
+    cout << " - Suma: " << suma_actual << endl;
+    if (suma_actual < suma_minima) {
+        suma_minima = suma_actual;
+        pi_minimo = pi;
+    }
+}
+
+int calcularSumaAux(vector<int> pi){
+    int suma_actual = 0;
+    for (int i = 0; i < pi.size()-1; i++) {
+        suma_actual += matriz[pi[i]][pi[i + 1]];
+    }
+    cout << "Permutación: ";
+    for (int i : pi) {
+        cout << i << " ";
+    }
+    cout << " - Suma: " << suma_actual << endl;
+
+    return suma_actual;
+}
+
+void armarPermutaciones(vector<int> pi_actual){
+    if (pi_actual.size()==n){
+        calcularSuma(pi_actual);
+        return;
+    }
+
+    if (pi_actual.size()>0 && pi_actual.size()<n){
+        int m = calcularSumaAux(pi_actual);
+        if (m>=suma_minima) return;
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (!used[i]) { // esto sirve para no repetir índices
+            used[i] = true;
+            pi_actual.push_back(i);
+            armarPermutaciones(pi_actual);
+            pi_actual.pop_back();
+            used[i] = false;
+        }
+    }
+}
+
+
+int main() {
+    vector<int> pi_actual;
+    armarPermutaciones(pi_actual);
+
+    cout << "Permutación de suma mínima: ";
+    for (int i : pi_minimo) {
+        cout << i << " ";
+    }
+    cout << "\nSuma mínima: " << suma_minima << endl;
+
+    return 0;
+}
+```
+
+
 
 
 ## Programación Dinámica (y su relación con *backtracking*)
