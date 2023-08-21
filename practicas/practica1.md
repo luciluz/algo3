@@ -95,6 +95,7 @@ int main() {
 
 **b)** El arbol de backtracking por fuerza bruta sería de este estilo:
 ![im4](images/ej2_tree_fuerzabruta.png)
+CORRECCIÓN: este árbol no debería repetir números, la lógica es parecida pero sin repetir números. El árbol corregido queda pendiente.
 
 Una posible implementación sería la siguiente:
 ```cpp
