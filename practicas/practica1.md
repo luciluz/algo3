@@ -438,7 +438,7 @@ int main() {
 
 **b)** calcular complejidad temporal y espacial (pendiente)
 
-**c)** Una poda por optimalidad sería calcular la parte de la fórmula que es una sumatoria para tener un calculo parcial de esa permutación. Si el cálculo es mayor o igual a la suma mínima entonces no vale la pena seguir por ese camino ya que no se obtendrá una solución mejor. El árbol para el ejemplo de la consigna sería el siguiente:
+**c)** Una poda por optimalidad sería calcular la parte de la fórmula que es una sumatoria para tener un cálculo parcial de esa permutación. Si el cálculo es mayor o igual a la suma mínima entonces no vale la pena seguir por ese camino ya que no se obtendrá una solución mejor. El árbol para el ejemplo de la consigna sería el siguiente:
 
 ![im7](images/ej4_tree2.png)
 
