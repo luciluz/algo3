@@ -389,7 +389,7 @@ vector<bool> used(n, false);
 
 void calcularSuma(vector<int> pi) {
     int suma_actual = 0;
-    suma_actual += matriz[n - 1][0];
+    suma_actual += matriz[pi[n-1][pi[0]];
     for (int i = 0; i < n - 1; i++) {
         suma_actual += matriz[pi[i]][pi[i + 1]];
     }
@@ -463,7 +463,7 @@ vector<bool> used(n, false);
 
 void calcularSuma(vector<int> pi) {
     int suma_actual = 0;
-    suma_actual += matriz[n - 1][0];
+    suma_actual += matriz[pi[n-1]][pi[0]];
     for (int i = 0; i < n - 1; i++) {
         suma_actual += matriz[pi[i]][pi[i + 1]];
     }
