@@ -305,6 +305,7 @@ void armarSubconj(vector<int> subconj_actual, int k){
 **a)** Para entender el funcionamiento del algoritmo, el siguiente árbol es cómo realiza las recursiones el algoritmo para la matriz de la consigna:
 
 ![im6](images/ej4_tree1.png)
+NOTA: tenía un error el código al calcular la suma, por lo que los resultados no son exactamente los que deberían dar con el ejemplo de la consigna. De todas formas el comportamiento del algoritmo es el mismo y sirve para entender cómo funciona.
 
 La implementación en C++ sería la siguiente:
 ```cpp
@@ -441,6 +442,7 @@ int main() {
 **c)** Una poda por optimalidad sería calcular la parte de la fórmula que es una sumatoria para tener un cálculo parcial de esa permutación. Si el cálculo es mayor o igual a la suma mínima entonces no vale la pena seguir por ese camino ya que no se obtendrá una solución mejor. El árbol para el ejemplo de la consigna sería el siguiente:
 
 ![im7](images/ej4_tree2.png)
+NOTA: tenía un error el código al calcular la suma, por lo que los resultados no son exactamente los que deberían dar con el ejemplo de la consigna. De todas formas el comportamiento del algoritmo es el mismo y sirve para entender cómo funciona la poda.
 
 La siguiente es una implementación en C++ que imprime por pantalla las permutaciones y sus respectivas sumas parciales para poder observar lo que está pasando:
 
