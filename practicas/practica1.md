@@ -543,4 +543,70 @@ int main() {
 ### Ejercicio 5
 
 **a)**
+
+### Ejercicio 7
+
+**b)**
+![im8](images/ej7_gains_formule.png)
+
+**d)** Posible implementación top-down en C++:
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+// variables globales
+vector<int> precios = {3,6,10,2,4,5,10};
+vector<vector<int>> memo;
+
+int max_gain(int c, int j){
+    // caso indefinido
+    if(c<0 or c>j){
+        return -999999;
+    }
+
+    // caso base
+    if(c==0 and j==0){
+        return 0;
+    }
+
+    // veo si ya resolví esta solución
+    if (memo[c][j] != -1) {
+        return memo[c][j];
+    }
+
+    // opciones posibles
+    int comprar = max_gain(c - 1, j - 1) - precios[j - 1];
+    int vender = max_gain(c + 1, j - 1) + precios[j - 1];
+    int nada = max_gain(c, j-1);
+
+    // Máximo entre las opciones
+    memo[c][j]=max(comprar, max(vender,nada));
+    return memo[c][j];
+}
+
+int main() {
+    int initial_asteroids = 0;
+    int days = precios.size();
+
+    // inicializar la tabla de memorización con -1
+    memo.assign(days + 1, vector<int>(days + 1, -1));
+
+    int result = max_gain(initial_asteroids, days);
+
+    if (result == -1) {
+        cout << "No es posible obtener ganancia neta." << endl;
+    } else {
+        cout << "La máxima ganancia neta es: " << result << endl;
+    }
+
+    return 0;
+}
+```
+
+
+
   
