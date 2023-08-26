@@ -579,9 +579,9 @@ int max_gain(int c, int j){
     }
 
     // opciones posibles
-    int comprar = max_gain(c - 1, j - 1) - precios[j - 1];
-    int vender = max_gain(c + 1, j - 1) + precios[j - 1];
-    int nada = max_gain(c, j-1);
+    int comprar = max_gain(c-1,j-1)-precios[j-1];
+    int vender = max_gain(c+1,j-1)+precios[j-1];
+    int nada = max_gain(c,j-1);
 
     // Máximo entre las opciones
     memo[c][j]=max(comprar, max(vender,nada));
@@ -593,11 +593,11 @@ int main() {
     int days = precios.size();
 
     // inicializar la tabla de memorización con -1
-    memo.assign(days + 1, vector<int>(days + 1, -1));
+    memo.assign(days + 1, vector<int>(days+1,-1));
 
     int result = max_gain(initial_asteroids, days);
 
-    if (result == -1) {
+    if (result==-1) {
         cout << "No es posible obtener ganancia neta." << endl;
     } else {
         cout << "La máxima ganancia neta es: " << result << endl;
