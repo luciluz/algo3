@@ -608,7 +608,7 @@ int main() {
 ```
 
 **Complejidad Temporal** = O(c\*j), ya que la función debe chequear todas las combinaciones posibles entre cantidad de asteroides y cantidad de días. \
-**Complejidad Espacial** = O(c\*j + k) = O(c*j), ya que la variable "memo" guarda c\*j resultados posibles y k es una constante que representa los cálculos que se hacen dentro del algoritmo.
+**Complejidad Espacial** = O(c*j), ya que la variable "memo" guarda c\*j resultados posibles.
 
 
 
