@@ -81,6 +81,31 @@ Por H.I. inductiva sabemos que esa igualdad se cumple, entonces al agregar k y k
 
 
 
+### Ejercicio 2
+
+Supongamos que tenemos un vector W que representa los grados de cada uno de los v<sub>i</sub>, con 1 <= i <= n, que pertenecen a G de la siguiente manera:
+
+$$ 
+W = [d(v_1),d(v_2),...,d(v_n)]
+$$ 
+
+Queremos demostrar que:
+
+$$
+\neg\exists \text{ i, j donde } i \neq j  \text{ tal que } d(v_i) = d(v_j)
+$$
+
+Para ello vamos ir por el absurdo pensando lo contrario, es decir, que todos son distintos y no puede pasar lo que se quiere demostrar.
+
+Entonces, sabemos que el grado máximo que puede tener algún nodo n de G es n-1, lo que se consigue cuando un nodo está conectado con todos los demás. Si queremos conseguir un vector W con los valores ordenados, la única combinación posible de que todos sean distintos, tomando en cuenta que n-1 es el su valor más alto es la siguiente:
+
+$$ 
+W = [0, 1, 2, ..., n-1]
+$$ 
+
+Lo que es un absurdo, puesto que según esto existe algún nodo cuyo grado es 0 y habíamos dicho que para que uno tenga grado n-1 este debe estar conectado con todos, es decir no puede haber uno con grado 0.
+
+
 
 
 
