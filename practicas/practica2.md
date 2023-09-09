@@ -77,7 +77,7 @@ $$
 \sum_{i=1}^{n} d_{in}(v_i) + k + k' = \sum_{i=1}^{n} d_{out}(v_i) + k + k' = |E(D_{n})| + k + k' = |E(D_{n+1})|
 $$ 
 
-Y si cancelamos todos los k y k' te queda igual que la H.I. entonces también se cumple el paso n+1.
+Por H.I. inductiva sabemos que esa igualdad se cumple, entonces al agregar k y k' a cada igualdad se seguirá cumpliendo, por ende también se cumple el paso n+1.
 
 
 
