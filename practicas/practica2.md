@@ -31,13 +31,13 @@ Quiero ver que se cumpla para n+1 nodos.
 
 Supongamos que nuestro digrafo D<sub>n</sub> es el siguiente:
 
-![im1](practicas/images/practica2_ej1_Dn.png)
+![im1](images/practica2_ej1_Dn.png)
 
 (los ejes son de referencia, en realidad pueden estar conectados de cualquier manera posible)
 
 Entonces, en el caso de D<sub>n+1</sub> **progongo observar dos casos distintos**. El primero sería agregar un nuevo nodo (v<sub>n+1</sub>) pero que sea aislado:
 
-![im2](practicas/images/practica2_ej1_ptoaislado.png)
+![im2](images/practica2_ej1_ptoaislado.png)
 
 Entonces tenemos lo siguiente:
 
@@ -56,7 +56,7 @@ tanto las sumatorias del paso n como |E(D)| son iguales a las de la H.I. entonce
 
 En el otro caso el nuevo nodo v<sub>n+1</sub> tiene k ejes de salida y k' ejes de entrada, como se intenta ilustrar en la siguiente imagen:
 
-![im3](practicas/images/practica2_ej1_induccion.png)
+![im3](images/practica2_ej1_induccion.png)
 
 Entonces aquí sabemos lo siguiente:
 
