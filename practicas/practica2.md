@@ -138,6 +138,55 @@ $$
 De esta manera tendríamos un grafo D<sub>n</sub> orientado que cumple lo que pide la consigna y es único ya que es la única combinación de grados posibles con tal de que todos sean distintos (recordar que n-1 es el grado máximo, como en el ejercicio anterior).
 
 
+### Ejercicio 4
 
+**a)** 
+H.I. : Sea G<sub>k</sub> un grafo de k nodos donde m > (n-1)(n-2)/2 -> G<sub>k</sub> es conexo
+
+Para los casos k=0 o k=1 no se puede hablar de que sean conexos ya que ni siquiera tienen aristas.
+
+Caso base k=2 y m=1:
+
+1 > (2-1)(2-2)/2 -> 1 > 0 -> está bien y cumple.
+
+Paso inductivo:
+
+Supongamos que tenemos un grafo G<sub>k+1</sub> con k+1 nodos y m > k(k-1)/2 entonces quiero ver si es conexo. Vamos a ponernos en el peor caso, es decir, que m es apenas mayor a esa desigualdad:
+
+$$ 
+m = \frac{k(k-1)}{2} + 1
+$$
+
+Ahora me gustaría quitarle un nodo para tener el grafo G<sub>k</sub> de la H.I. pero al hacerlo debo también quitarle sus ejes. Llamemos m' a los ejes de G<sub>k</sub> quedaría entonces:
+
+$$ 
+m' = \frac{k(k-1)}{2} + 1 - d_{G_{k+1}}(v_{k+1})
+$$
+
+Ahora, la idea es la siguiente: si al restar el nodo para obtener el grafo G<sub>k</sub> este sigue siendo conexo, entonces G<sub>k+1</sub> también lo es. Supongamos el peor caso, que sería buscar el máximo valor que puede tener d<sub>G<sub>k+1</sub></sub>(v<sub>k+1</sub>). Como ya vimos antes, el máximo valor posible sería k, donde este nodo estaría conectado con todos los demás, pero si eso sucede quiere decir que es conexo ya que gracias a ese nodo tienes a todos conectados entre sí. Entonces el peor valor sería restarle 1, es decir:
+
+$$ 
+d_{G_{k+1}}(v_{k+1}) = k-1 \implies m' = \frac{k(k-1)}{2} + 1 - (k - 1)
+$$
+
+Nos gustaría ver que m' cumple H.I. así que resolvemos la siguiente desigualdad:
+
+$$ 
+\frac{k(k-1)}{2} + 1 - (k - 1) > \frac{(k-1)(k-2)}{2} 
+$$
+
+multiplico todo por 2:
+
+$$ 
+k(k - 1) + 2 - 2k + 2 > (k - 1)(k - 2) 
+$$
+
+resuelvo las multiplicaciones
+
+$$
+k^2 - 3k + 4 > k^2 -3k + 2 \implies 4 > 2
+$$
+
+Entonces la desigualdad se cumple, m' > (k-1)(k-2)/2 -> por H.I. G<sub>k</sub> es conexo, entonces G<sub>k+1</sub> también.
 
 
