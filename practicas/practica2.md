@@ -126,7 +126,7 @@ La idea para ir armando un grafo orientado de estas características es empezar 
 De esta manera cada d<sub>out</sub>(v<sub>i</sub>) es igual al anterior +1. Por ejemplo, si tenemos el siguiente vector W<sub>out</sub>:
 
 $$ 
-W_{out} = [d_{out}(v_1),d{out}(v_2),...,d{out}(v_n)]
+W_{out} = [d_{out}(v_1),d_{out}(v_2),...,d_{out}(v_n)]
 $$
 
 Y empezamos a construir nuestro grafo de la manera en que se muestra en la imagen, quedaría de la siguiente manera:
