@@ -129,13 +129,13 @@ $$
 W_{out} = [d_{out}(v_1),d_{out}(v_2),...,d_{out}(v_n)]
 $$
 
-Y empezamos a construir nuestro grafo de la manera en que se muestra en la imagen, quedaría de la siguiente manera:
+Y si empezamos a construir nuestro grafo de la manera en que se muestra en la imagen, quedaría de la siguiente manera:
 
 $$ 
 W_{out} = [0,1,2,...,n-1]
 $$
 
-De esta manera tendríamos un grafo D<sub>n</sub> orientado que cumple lo que pide la consigna. Ahora nos gustaría probar que es el único (como? no sé :( ).
+De esta manera tendríamos un grafo D<sub>n</sub> orientado que cumple lo que pide la consigna y es único ya que es la única combinación de grados posibles con tal de que todos sean distintos (recordar que n-1 es el grado máximo, como en el ejercicio anterior).
 
 
 
