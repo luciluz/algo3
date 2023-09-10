@@ -105,7 +105,21 @@ $$
 
 Lo que es un absurdo, puesto que según esto existe algún nodo cuyo grado es 0 y habíamos dicho que para que uno tenga grado n-1 este debe estar conectado con todos, es decir no puede haber uno con grado 0.
 
+### Ejercicio 3
 
+Sea Dn un grafo orientado:
+
+$$
+D_n = [v_1,v_2,...,v_n]
+$$
+
+quiero probar que existe un único D<sub>n</sub> que cumple:
+
+$$
+\forall \text{ i, j  donde } i \neq j \wedge d_{out}(v_i) \neq d_{out}(v_j) \wedge (\neg \exists i,j \text{ tal que } (i,j) \in E(D_n) \wedge (j,i) \in E(D_n))
+$$
+
+La idea para ir armando un grafo orientado de estas características es empezar por un nodo que no tenga ninguna conexión, luego el siguiente se conecta a ese y cada vez que agregas un nodo se conecta a todos los que ya tenías. La siguiente imagen representa esta idea:
 
 
 
