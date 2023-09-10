@@ -31,6 +31,7 @@ Quiero ver que se cumpla para n+1 nodos.
 
 Supongamos que nuestro digrafo D<sub>n</sub> es el siguiente:
 
+
 ![im1](images/practica2_ej1_Dn.png)
 
 (los ejes son de referencia, en realidad pueden estar conectados de cualquier manera posible)
@@ -188,5 +189,17 @@ k^2 - 3k + 4 > k^2 -3k + 2 \implies 4 > 2
 $$
 
 Entonces la desigualdad se cumple, m' > (k-1)(k-2)/2 -> por H.I. G<sub>k</sub> es conexo, entonces G<sub>k+1</sub> también.
+
+### Ejercicio 5
+
+Tenemos P y Q que son dos caminos distintos de un grafo G, donde ambos unen el vértice v y w. Queremos ver que P U Q forman un ciclo.
+
+Bueno, al saber que P y Q son distintos sabemos que en algún punto se separan en caminos distintos, pero que ambos llegan finalmente a w. Si suponemos que existe un punto v<sub>i-1</sub> que es el último que comparten antes de separarse, tendríamos algo como esto:
+
+![im4](images/practica2_ej5.png)
+
+De la imagen se observan dos subcaminos, uno de P que va desde v<sub>i</sub> hasta w<sub>q</sub> y otro de Q que va desde w<sub>i</sub> hasta w<sub>q</sub>. Ahora si a ambos caminos le agregamos el anterior v<sub>i</sub> se ve claramente que la union de ambos subcaminos forman un ciclo. Esto mismo es aplicable hacia atrás con todos los subcaminos que se forman cuando P y Q se separan, hasta llegar a v<sub>p</sub>, entonces la unión de P y Q también forman un ciclo.
+
+
 
 
