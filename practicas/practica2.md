@@ -121,6 +121,23 @@ $$
 
 La idea para ir armando un grafo orientado de estas características es empezar por un nodo que no tenga ninguna conexión, luego el siguiente se conecta a ese y cada vez que agregas un nodo se conecta a todos los que ya tenías. La siguiente imagen representa esta idea:
 
+![im4](images/practica2_ej3_ejemplo1.png)
+
+De esta manera cada d<sub>out</sub>(v<sub>i</sub>) es igual al anterior +1. Por ejemplo, si tenemos el siguiente vector W<sub>out</sub>:
+
+$$ 
+W_{out} = [d_{out}(v_1),d{out}(v_2),...,d{out}(v_n)]
+$$
+
+Y empezamos a construir nuestro grafo de la manera en que se muestra en la imagen, quedaría de la siguiente manera:
+
+$$ 
+W_{out} = [0,1,2,...,n-1]
+$$
+
+De esta manera tendríamos un grafo D<sub>n</sub> orientado que cumple lo que pide la consigna. Ahora nos gustaría probar que es el único (como? no sé :( ).
+
+
 
 
 
