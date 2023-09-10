@@ -163,7 +163,7 @@ $$
 m' = \frac{k(k-1)}{2} + 1 - d_{G_{k+1}}(v_{k+1})
 $$
 
-Ahora, la idea es la siguiente: si al restar el nodo para obtener el grafo G<sub>k</sub> este sigue siendo conexo, entonces G<sub>k+1</sub> también lo es. Supongamos el peor caso, que sería buscar el máximo valor que puede tener d<sub>G<sub>k+1</sub></sub>(v<sub>k+1</sub>). Como ya vimos antes, el máximo valor posible sería k, donde este nodo estaría conectado con todos los demás, pero si eso sucede quiere decir que es conexo ya que gracias a ese nodo tienes a todos conectados entre sí. Entonces el peor valor sería restarle 1, es decir:
+Ahora, la idea es la siguiente: si al restar el nodo para obtener el grafo G<sub>k</sub> este sigue siendo conexo, entonces G<sub>k+1</sub> también lo es. Supongamos el peor caso, que sería buscar el máximo valor que puede tener d<sub>G<sub>k+1</sub></sub>(v<sub>k+1</sub>). Como ya vimos antes, el máximo valor posible sería k, donde este nodo estaría conectado con todos los demás, pero si eso sucede quiere decir que es conexo ya que gracias a ese nodo tienes a todos conectados entre sí. Entonces el peor valor sería restarle k-1, es decir:
 
 $$ 
 d_{G_{k+1}}(v_{k+1}) = k-1 \implies m' = \frac{k(k-1)}{2} + 1 - (k - 1)
