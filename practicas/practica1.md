@@ -611,5 +611,17 @@ int main() {
 **Complejidad Espacial** = O(c*j), ya que la variable "memo" guarda c\*j resultados posibles.
 
 
+### Ejercicio 10
+
+**b)** La función recursiva podría ser la siguiente:
+
+$$
+cantCajas(s, i) =
+\begin{cases}
+     -\infty & \text{si } s < 0 \\
+     0 & \text{si } i = |P| \\
+     max(cantCajas(min(S[i]-W[i+1], S[i+1]-W[i+1]), i+1) + 1, cantCajas(s, i+1) ) & \text{si no}
+\end{cases}
+$$
 
   
