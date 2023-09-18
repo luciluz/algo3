@@ -619,11 +619,13 @@ $$
 cantCajas(s, i) =
 \begin{cases}
      -\infty & \text{si } s < 0 \\
-     0 & \text{si } i = |P| \\
+     0 & \text{si } i = |W| \\
      max(cantCajas(cantCajas(S[0],i+1) + 1, cantCajas(s,i+1) ) & \text{si } i = 0 \\
      max(cantCajas(min(s-W[i], S[i]-W[i]), i+1) + 1, cantCajas(s, i+1) ) & \text{si no}
 \end{cases}
 $$
+
+La idea es iniciar con s=inf e i=0.
 
 **c)** Antes de mostrar la implementación con DP, el siguiente es un algoritmo que usa fuerza bruta:
 
@@ -633,7 +635,7 @@ int cantCajas(int s, int i){
 
     if(i == W.size()) return 0;
 
-    if(i==0){ //primera caja
+    if(s == masInf){ //aun no pongo ninguna caja
         int pongoCaja = cantCajas(S[0],i+1) + 1;
         int noPongoCaja = cantCajas(s,i+1);
         return max(pongoCaja, noPongoCaja);
@@ -646,4 +648,35 @@ int cantCajas(int s, int i){
     }
 }
 ```
+
+Luego, al implementar DP queda la siguiente implementación:
+
+```cpp
+int cantCajas(int s, int i){
+    if(s < 0) return menosInf;
+
+    if(i == W.size()) return 0;
+
+    if(s != masInf){
+        if(dp[s][i] != -1) return dp[s][i];
+    }
+
+    if(s==masInf){ //primera caja
+        int pongoCaja = cantCajas(S[0],i+1) + 1;
+        int noPongoCaja = cantCajas(s,i+1);
+        dp[S[0]][i]=max(pongoCaja, noPongoCaja);
+        return dp[S[0]][i];
+    }
+    else{
+        int minSoporte=min(s-W[i],S[i]-W[i]);
+        int pongoCaja = cantCajas(minSoporte,i+1) + 1;
+        int noPongoCaja = cantCajas(s,i+1);
+        dp[s][i]=max(pongoCaja, noPongoCaja);
+        return dp[s][i];
+    }
+}
+```
+
+El tamaño del dp tiene que ser (maxSoporte+1)*|W|
+
   
