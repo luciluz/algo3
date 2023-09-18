@@ -201,5 +201,28 @@ Bueno, al saber que P y Q son distintos sabemos que en algún punto se separan e
 De la imagen se observan dos subcaminos, uno de P que va desde v<sub>i</sub> hasta w<sub>q</sub> y otro de Q que va desde w<sub>i</sub> hasta w<sub>q</sub>. Ahora si a ambos caminos le agregamos el anterior v<sub>i-1</sub> se ve claramente que la union de ambos subcaminos forman un ciclo. Esto mismo es aplicable hacia atrás con todos los subcaminos que se forman cuando P y Q se separan, hasta llegar a v<sub>p</sub>, entonces la unión de P y Q también forman un ciclo.
 
 
+### Ejercicio 14
 
+Aquí solo hice un código que se queda con el primer ciclo que encuentra, siempre y cuando para todo v<sub>i</sub>, d<sub>out</sub>(v<sub>i</sub>) > 0.
 
+```cpp
+void cicloDigrafo(int v){
+
+    if(comienzo_ciclo != -1 and fin_ciclo != -1){
+        return;
+    }
+
+    for(int u: d_out[v]){
+        if(padre[u] == -1){
+            padre[u] = v;
+            cicloDigrafo(u);
+        } else {
+            if(comienzo_ciclo == -1 and fin_ciclo == -1){
+                comienzo_ciclo=v;
+                fin_ciclo=padre[v];
+            }
+            return;
+        }
+    }
+}
+```
