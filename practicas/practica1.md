@@ -620,8 +620,30 @@ cantCajas(s, i) =
 \begin{cases}
      -\infty & \text{si } s < 0 \\
      0 & \text{si } i = |P| \\
-     max(cantCajas(min(S[i]-W[i+1], S[i+1]-W[i+1]), i+1) + 1, cantCajas(s, i+1) ) & \text{si no}
+     max(cantCajas(cantCajas(S[0],i+1) + 1, cantCajas(s,i+1) ) & \text{si } i = 0 \\
+     max(cantCajas(min(s-W[i], S[i]-W[i]), i+1) + 1, cantCajas(s, i+1) ) & \text{si no}
 \end{cases}
 $$
 
+**c)** Antes de mostrar la implementación con DP, el siguiente es un algoritmo que usa fuerza bruta:
+
+```cpp
+int cantCajas(int s, int i){
+    if(s < 0) return menosInf;
+
+    if(i == W.size()) return 0;
+
+    if(i==0){ //primera caja
+        int pongoCaja = cantCajas(S[0],i+1) + 1;
+        int noPongoCaja = cantCajas(s,i+1);
+        return max(pongoCaja, noPongoCaja);
+    }
+    else{
+        int minSoporte=min(s-W[i],S[i]-W[i]);
+        int pongoCaja = cantCajas(minSoporte,i+1) + 1;
+        int noPongoCaja = cantCajas(s,i+1);
+        return max(pongoCaja, noPongoCaja);
+    }
+}
+```
   
