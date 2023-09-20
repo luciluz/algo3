@@ -6,9 +6,17 @@
 
 **a)**
 
+![im1](images/practica3_ej1a.png)
+
+Como se observa en la imagen, el camino entre dos nodos distintos que pertenezcan ambos a V o ambos a W siempre tendrán una cantidad impar de nodos y al juntarlos con una arista *backedge* esto se sigue manteniendo.
+
 **b)**
 
-**c)** Aquí la idea es usar dfs pero con un vector de distancias, donde se guarde la distancia de cada nodo hasta la raíz del árbol. Para saber si es bipartito, se inicia una variable booleana en 'true' y en caso de encontrar un *backedge*
+![im2](images/practica3_ej1b.png)
+
+Como se observa en la imagen, siempre y cuando los ejes *backedge* no conecten a dos nodos de V o dos nodos de W, se formará una bipartición entre V y W.
+
+**c)** Aquí la idea es usar DFS pero con un vector de distancias, donde se guarde la distancia de cada nodo hasta la raíz del árbol. Para saber si es bipartito, se inicia una variable booleana en 'true' y en caso de encontrar un *backedge*
 fijarse si la distancia de ambos nodos es par o ambos impar entonces no es bipartito (significa que dos nodos v o w están conectados entre sí). Entonces en caso de que ocurra lo anterior armo el ciclo de longitud impar. Una posible
 implementación sería la siguiente:
 
