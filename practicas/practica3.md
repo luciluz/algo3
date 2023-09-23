@@ -68,7 +68,7 @@ void dfs(int v, int distRaiz) {
 
 ### Ejercicio 8
 
-La idea es usar bfs para recorrer los distintos caminos y cortar cuando encuentres un valor que sea igual a w, retornando la distancia, ya que esta representa la cantidad de movimientos que se hicieron desde la casilla inicial. De todas maneras, la parte complicada es pensar cómo representarás el grafo, que en este caso se hizo con una matriz de adyacencias para cada (x<sub>i</sub>,y<sub>i</sub>,v<sub>i</sub>). Como cada casilla tiene 4 direcciones a las que puede ir la complejidad de armar tu matriz es de O(4\*m\*n\*k) = O(m\*n\*k). Una implementación posible en c++ sería la siguiente:
+La idea es usar bfs para recorrer los distintos caminos y cortar cuando encuentres un valor que sea igual a w, retornando la distancia, ya que esta representa la cantidad de movimientos que se hicieron desde la casilla inicial. De todas maneras, la parte complicada es pensar cómo representarás el grafo, que en este caso se hizo con una lista de adyacencias para cada (x<sub>i</sub>,y<sub>i</sub>,v<sub>i</sub>). Como cada casilla tiene 4 direcciones a las que puede ir la complejidad de armar tu lista es de O(4\*m\*n\*k) = O(m\*n\*k). Una implementación posible en c++ sería la siguiente:
 
 
 ```cpp
@@ -92,7 +92,7 @@ vector<vector<vector<vector<tripla>>>> grafo(m, vector<vector<vector<tripla>>>(n
 int dx[] = {-1, 1, 0, 0}; // son las cuatro direcciones a las que se puede ir
 int dy[] = {0, 0, -1, 1};
 
-void matrizAdyacencias() { // O(m*n*k)
+void listaAdyacencias() { // O(m*n*k)
     int valor_actual = posInicial;
     for (int x = 0; x < m; ++x) {
         for (int y = 0; y < n; ++y) {
@@ -136,7 +136,7 @@ int bfs(tripla s) {
 
 int main(){
 
-    matrizAdyacencias();
+    listaAdyacencias();
     int res = bfs({0,0,1});
 
     cout << res << endl;
