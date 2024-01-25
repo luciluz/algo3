@@ -1,5 +1,5 @@
 # Algoritmos y Estructuras de Datos III
-2023 - 2° cuatrimestre
+2023 - 2° cuatrimestre (repositorio incompleto)
 
 ## Prácticas
 Práctica 1: Técnicas Algorítmicas
